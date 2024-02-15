@@ -6,14 +6,13 @@
 
       <mat-form-field>
 
-        <input matInput type="email" name="email"
-               placeholder="Email" ngModel>
+        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel">
 
       </mat-form-field>
 
       <mat-form-field>
 
-        <input matInput type="password" placeholder="Password" name="password" ngModel>
+        <input matInput type="password" placeholder="Password" name="password" ngModel #password="ngModel">
 
       </mat-form-field>
 
@@ -22,6 +21,15 @@
       </button>
 
     </form>
+
+    <div class="form-val">
+      <!-- {{ loginForm.value|json }} -->
+      <!-- Ao fazer essa forma estou usanod um two way data biding para mostrar a ligação instantaneamente -->
+      <!-- À medida que vou digitando o objeto no formato json vai mostrando a mudança que está sendo armazenada -->
+    </div>
+    <div>
+      {{ email.value + ' ' + password.value }}
+    </div>
 
   </mat-card-content>
 </mat-card>
