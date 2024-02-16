@@ -6,13 +6,15 @@
 
       <mat-form-field>
 
-        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel">
+        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel" required>
+        <!-- Ao colocar required, tornamos o campo obrigatório -->
+        <!-- Note que o campo se torma obrigatório, não que aceitará apenas um email valido -->
 
       </mat-form-field>
 
       <mat-form-field>
 
-        <input matInput type="password" placeholder="Password" name="password" ngModel #password="ngModel">
+        <input matInput type="password" placeholder="Password" name="password" ngModel #password="ngModel" required>
 
       </mat-form-field>
 
@@ -28,7 +30,7 @@
       <!-- À medida que vou digitando o objeto no formato json vai mostrando a mudança que está sendo armazenada -->
     </div>
     <div>
-      {{ email.value + ' ' + password.value }}
+      {{ email.valid }}
     </div>
 
   </mat-card-content>
