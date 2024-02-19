@@ -9,6 +9,9 @@
         <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel" required>
         <!-- Ao colocar required, tornamos o campo obrigatório -->
         <!-- Note que o campo se torma obrigatório, não que aceitará apenas um email valido -->
+        <mat-error *ngIf="email.errors?.required">O email é obrigatório!</mat-error>
+        <!-- Mensagem de erro atrelada ao campo que é mostrada quando o campo é touched por exemplo, respeitando o required -->
+        <!-- Importante colocar ? caso nosso erro seja null, senão teremos um erro no programa -->
 
       </mat-form-field>
 
@@ -30,7 +33,8 @@
       <!-- À medida que vou digitando o objeto no formato json vai mostrando a mudança que está sendo armazenada -->
     </div>
     <div>
-      {{ email.valid }}
+      {{ email.errors|json }}
+      <!-- IMPORTANTE!!! Quando exibir o valor null, é null para errors, significa que está ok, não tem erros -->
     </div>
 
   </mat-card-content>
