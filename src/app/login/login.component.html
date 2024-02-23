@@ -6,12 +6,19 @@
 
       <mat-form-field>
 
-        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel" required>
+        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel" email required minlength="3" maxlength="20" pattern="[a-z]+">
         <!-- Ao colocar required, tornamos o campo obrigatório -->
         <!-- Note que o campo se torma obrigatório, não que aceitará apenas um email valido -->
-        <mat-error *ngIf="email.errors?.required">O email é obrigatório!</mat-error>
+        <mat-error *ngIf="email.errors?.required"> O email é obrigatório! </mat-error>
         <!-- Mensagem de erro atrelada ao campo que é mostrada quando o campo é touched por exemplo, respeitando o required -->
         <!-- Importante colocar ? caso nosso erro seja null, senão teremos um erro no programa -->
+        <!-- Ao trabalharmos com ngIf podemos manipular qual mensagem de erro irá aparecer para o usuario caso tenhamos mais de uma exigência para o campo -->
+        <mat-error *ngIf="email.errors?.minlength">
+          Email com {{email.errors?.minlength.requiredLength}} caracteres,
+          tem somente {{email.errors?.minlength.actualLength}}.
+        </mat-error>
+
+        <mat-error *ngIf="email.errors?.email">O email não é valido!</mat-error>
 
       </mat-form-field>
 
