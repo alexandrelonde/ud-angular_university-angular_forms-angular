@@ -6,7 +6,13 @@
 
       <mat-form-field>
 
-        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel" email required minlength="3" maxlength="20">
+        <input matInput type="email" name="email" placeholder="Email"
+          ngModel [ngModelOptions]="{updateOn: 'submit'}" #email="ngModel"
+          (ngModelChange)="onEmailChange($event)"
+          email required minlength="3" maxlength="20">
+        <!-- ngModelOptions irá especificar quando o evento deverá ser emitido, nesse caso quando deixar o campo -->
+        <!-- muito usado para verificar se um id de email ainda está disponível -->
+        <!-- ngModelChange envia cada mudança no campo do email -->
         <!-- Ao colocar required, tornamos o campo obrigatório -->
         <!-- Note que o campo se torma obrigatório, não que aceitará apenas um email valido -->
         <mat-error *ngIf="email.errors?.required"> O email é obrigatório! </mat-error>
@@ -28,7 +34,7 @@
 
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
+      <button mat-raised-button color="primary" type="submit">
         Login
       </button>
       <!-- usando ngSubmit, vamos tirar o evento de click do botão e substitui-lo por type="submit" -->
@@ -44,7 +50,8 @@
       <!-- À medida que vou digitando o objeto no formato json vai mostrando a mudança que está sendo armazenada -->
     </div>
     <div>
-      {{ email.errors|json }}
+      {{ email.value|json }}
+      <!-- {{ email.errors|json }} -->
       <!-- IMPORTANTE!!! Quando exibir o valor null, é null para errors, significa que está ok, não tem erros -->
     </div>
 
