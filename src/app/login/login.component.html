@@ -2,11 +2,11 @@
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
 
-    <form class="login-form data-form" #loginForm="ngForm">
+    <form class="login-form data-form" #loginForm="ngForm" (ngSubmit)="login(loginForm, $event)">
 
       <mat-form-field>
 
-        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel" email required minlength="3" maxlength="20" pattern="[a-z]+">
+        <input matInput type="email" name="email" placeholder="Email" ngModel #email="ngModel" email required minlength="3" maxlength="20">
         <!-- Ao colocar required, tornamos o campo obrigatório -->
         <!-- Note que o campo se torma obrigatório, não que aceitará apenas um email valido -->
         <mat-error *ngIf="email.errors?.required"> O email é obrigatório! </mat-error>
@@ -28,9 +28,13 @@
 
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="login(loginForm)">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
         Login
       </button>
+      <!-- usando ngSubmit, vamos tirar o evento de click do botão e substitui-lo por type="submit" -->
+      <!-- com isso iremos alterar um evento simples de click atrelado a um método pelo submit -->
+      <!-- com isso nosso método fica a nível de formulário e não de clique do botão -->
+      <!-- pois o evento estará atrelado ao ngSubmit no form -->
 
     </form>
 
@@ -53,3 +57,5 @@
 
 <!-- Vale lembrar que ng-touched, ng-dirty e ng-valid são classes CSS aplicadas automaticamente pelo Angular no formulário de acordo com o estado dos seus campos -->
 <!-- Se um campo for obrigatório e não tiver dados no mesmo, ele será classificado com ngInvalid -->
+
+<!-- IMPORTANTE: [disabled]="!loginForm.valid" >>> desabilito o botão até que as informações do formulário sejam válidas -->
