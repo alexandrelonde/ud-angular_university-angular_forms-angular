@@ -7,9 +7,10 @@
       <mat-form-field>
 
         <input matInput type="email" name="email" placeholder="Email"
-          ngModel [ngModelOptions]="{updateOn: 'submit'}" #email="ngModel"
+          ngModel [ngModelOptions]="{standalone: true}" #email="ngModel"
           (ngModelChange)="onEmailChange($event)"
           email required minlength="3" maxlength="20">
+        <!-- [ngModelOptions]="{standalone: true}" o input field funciona desconectado da diretiva ngForm -->
         <!-- ngModelOptions irá especificar quando o evento deverá ser emitido, nesse caso quando deixar o campo -->
         <!-- muito usado para verificar se um id de email ainda está disponível -->
         <!-- ngModelChange envia cada mudança no campo do email -->
@@ -50,7 +51,7 @@
       <!-- À medida que vou digitando o objeto no formato json vai mostrando a mudança que está sendo armazenada -->
     </div>
     <div>
-      {{ email.value|json }}
+      {{ loginForm.value|json }}
       <!-- {{ email.errors|json }} -->
       <!-- IMPORTANTE!!! Quando exibir o valor null, é null para errors, significa que está ok, não tem erros -->
     </div>
