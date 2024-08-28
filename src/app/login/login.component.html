@@ -7,8 +7,7 @@
       <mat-form-field>
 
         <input matInput type="email" name="email" placeholder="Email"
-          ngModel [ngModelOptions]="{standalone: true}" #email="ngModel"
-          (ngModelChange)="onEmailChange($event)"
+          ngModel #email="ngModel"
           email required minlength="3" maxlength="20">
         <!-- [ngModelOptions]="{standalone: true}" o input field funciona desconectado da diretiva ngForm -->
         <!-- ngModelOptions irá especificar quando o evento deverá ser emitido, nesse caso quando deixar o campo -->
@@ -59,7 +58,10 @@
   </mat-card-content>
 </mat-card>
 
-<!-- A diretiva ngForm é utilizada para criar e associar automaticamente um objeto FormGroup ao formulário. -->
+<!--
+  ngForm
+  A diretiva ngForm é utilizada para criar e associar automaticamente um objeto FormGroup ao formulário.
+-->
 <!-- O que faz com que habilite o Angular a gerenciar o estado do formulário. -->
 <!-- Em cada campo do formulário colocamos a diretiva ngModel para fazer a ligação com o formulário -->
 

@@ -1,20 +1,17 @@
 <mat-card class="login-page">
-  <mat-card-title>Login (Reactive)</mat-card-title>
+  <mat-card-title class="title">Login (Reactive)</mat-card-title>
   <mat-card-content>
 
-    <form class="login-form data-form">
+    <form class="login-form data-form" [formGroup]="form">
 
       <mat-form-field>
-
-        <input matInput type="email" name="email"
-               placeholder="Email">
-
+        <mat-label>E-mail</mat-label>
+        <input matInput type="email" name="email" formControlName="email">
       </mat-form-field>
 
       <mat-form-field>
-
-        <input matInput type="password" placeholder="Password">
-
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
       </mat-form-field>
 
       <button mat-raised-button color="primary">
@@ -23,5 +20,19 @@
 
     </form>
 
+    <!-- Campos para teste -->
+    <div class="form-val">
+      {{form.value | json}}
+    </div>
+    <div>
+      {{form.valid}}
+    </div>
+
   </mat-card-content>
 </mat-card>
+
+<!--
+  [formGroup]="form" -> nome que está no arquivo .ts
+  formControlName="email" -> nome que está no arquivo .ts
+  formControlName="password" -> nome que está no arquivo .ts
+-->
