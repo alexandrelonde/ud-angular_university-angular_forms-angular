@@ -6,15 +6,15 @@
 
       <mat-form-field>
         <mat-label>E-mail</mat-label>
-        <input matInput type="email" name="email" formControlName="email">
+        <input matInput type="email" name="email" [formControl]="email">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password">
+        <input matInput type="password" [formControl]="password">
       </mat-form-field>
 
-      <button mat-raised-button color="primary">
+      <button mat-raised-button color="primary" class="btn-login">
         Login
       </button>
 
@@ -30,9 +30,3 @@
 
   </mat-card-content>
 </mat-card>
-
-<!--
-  [formGroup]="form" -> nome que está no arquivo .ts
-  formControlName="email" -> nome que está no arquivo .ts
-  formControlName="password" -> nome que está no arquivo .ts
--->
